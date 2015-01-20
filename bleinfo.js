@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 var async = require('async');
+var async_q = require ('async-q')
 var noble = require('noble');
+var Q = require('q'); 
 
 var peripheralUuid = process.argv[2];
 
@@ -91,14 +93,16 @@ function explore(peripheral) {
       var characteristicIndex = 0;
 
       var getDescriptorsInfo = function(callback, characteristic, characteristicInfo) {
-          async.series([
-            function(callback) {
+        
+          var series = {
+            // step-1
+            step1: function(callback) {
               var onDiscoverDescriptors = makeOnDiscoverDescriptorsFn(callback, characteristicInfo);
               characteristic.discoverDescriptors(onDiscoverDescriptors);
             },
-            function(callback) {
+            // step-2
+            step2: function(callback) {
               characteristicInfo += '\n    properties  ' + characteristic.properties.join(', ');
-
               if (characteristic.properties.indexOf('read') !== -1) {
                 characteristic.read(function(error, data) {
                   if (data) {
@@ -111,21 +115,30 @@ function explore(peripheral) {
               } else {
                 callback();
               }
-            },
-            function() {
+            }
+
+          }
+          
+          var seriesAllDone = function() {
               console.log(characteristicInfo);
               characteristicIndex++;
               callback();
-            }
-          ]);
+          }
+
+          async.series( series, seriesAllDone);
       }
 
       var onDiscoverCharacteristics =  function(error, characteristics) {
-          async.whilst(
-            function () {
+          var errFn = function(error) {
+              serviceIndex++;
+              callback();
+          }
+
+          var testCondition = function () {
               return (characteristicIndex < characteristics.length);
-            },
-            function(callback) {
+          }
+
+          var workerFn = function(callback) {
               var characteristic = characteristics[characteristicIndex];
               var characteristicInfo = '  ' + characteristic.uuid;
 
@@ -134,23 +147,24 @@ function explore(peripheral) {
               }
 
               getDescriptorsInfo(callback, characteristic, characteristicInfo);
-            },
-            function(error) {
-              serviceIndex++;
-              callback();
-            }
-          );
+          }
+
+          async.whilst( testCondition, workerFn, errFn );
       } 
       return onDiscoverCharacteristics;
   }
 
 
   var onDiscoverServices = function(error, services) {
-      async.whilst(
-        function () {
+      var errFn = function (err) {
+          peripheral.disconnect();
+      }
+
+      var testCondition = function () {
           return (serviceIndex < services.length);
-        },
-        function(callback) {
+      }
+
+      var workerFn = function(callback) {
           var service = services[serviceIndex];
           var serviceInfo = service.uuid;
 
@@ -162,11 +176,9 @@ function explore(peripheral) {
           var onDiscoverCharacteristics = makeOnDiscoverCharacteristicsFn(callback);
 
           service.discoverCharacteristics([], onDiscoverCharacteristics);
-        },
-        function (err) {
-          peripheral.disconnect();
-        }
-      );
+      }
+
+      async.whilst( testCondition , workerFn , errFn );
   }
 
   var onConnect = function(error) {
