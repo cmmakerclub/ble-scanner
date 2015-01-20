@@ -63,7 +63,7 @@ noble.on('discover', onDisCover);
 var counter = 0;
 var onGotOurData = function(peripheral, data) {
   if (counter >= 2) {
-    console.log(counter, data);
+    console.log(data);
     peripheral.disconnect();
   }
   else {
@@ -78,7 +78,8 @@ function explore(peripheral) {
   }
 
   peripheral.on('disconnect', function() {
-    console.log("GOT DISCONNECT SIGNAL");
+    if (DEBUG) 
+        console.log("GOT DISCONNECT SIGNAL");
     process.exit(0);
   });
 
@@ -139,7 +140,8 @@ function explore(peripheral) {
             data.characteristicInfo += '\n    properties  ' + characteristic.properties.join(', ');
 
             var onReadSpecificCharacteristics = makeOnReadSpecificCharacteristics(callback, data);
-            console.log(characteristicInfo);
+            if (DEBUG) 
+                console.log(characteristicInfo);
 
             if (characteristic.properties.indexOf('read') !== -1) {
               characteristic.read(onReadSpecificCharacteristics);
@@ -196,8 +198,7 @@ function explore(peripheral) {
                   onGotOurData(peripheral, data.toString().trim());
                 });
 
-                characteristic.notify(true, onFfe1Notify);
-
+                characteristic.notify(true, onFfe1Notify); 
 
               } // matched
 
