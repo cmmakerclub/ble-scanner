@@ -5,7 +5,8 @@
   "main": "scanner.js",
   "dependencies": {
     "async": "^0.9.0",
-    "noble": "^0.3.7"
+    "noble": "^0.3.7",
+    "q": "^1.1.2"
   },
   "devDependencies": {},
   "scripts": {

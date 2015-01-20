@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
 var async = require('async');
-var async_q = require ('async-q')
 var noble = require('noble');
 var Q = require('q'); 
 
-// var peripheralUuid = process.argv[2];
-var peripheralUuid = "431f28bb9a6f48d598a7e0d1f3f40e38"
+var peripheralUuid = process.argv[2] || "78a504809c47"
 
 var DEBUG = false;
 
