@@ -4,6 +4,7 @@
   "description": "scan nearby BLE",
   "main": "scanner.js",
   "dependencies": {
+    "async": "^0.9.0",
     "noble": "^0.3.7"
   },
   "devDependencies": {},
