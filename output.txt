@@ -1,0 +1,90 @@
+Starting scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -65
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -82
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -63
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -53
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -71
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -64
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -55
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -65
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -55
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -82
+timeout Stopping scan.
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -78
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -55
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -81
+timeout Stopping scan.
+Peripheral discovered!
+  Name: ALCOHOLIC
+  UUID: dda21ca37141486cb45efe0494ed328e
+  rssi: -54
+Peripheral discovered!
+  Name: Apple TV
+  UUID: 19e02cd9092c433eaebba5188da39598
+  rssi: -72

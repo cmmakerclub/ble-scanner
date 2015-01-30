@@ -4,17 +4,15 @@ var async = require('async');
 var noble = require('noble');
 var Q = require('q'); 
 
-var peripheralUuid = process.argv[2] || "78a504809c47"
+var peripheralUuid = process.argv[2] || "da9ee4f0576f4d989a5ca0d07b666027" 
+// var peripheralUuid = process.argv[2] || "78a504809c47" 
 
 var DEBUG = false;
 
-noble.on('stateChange', function(state) {
-  if (state === 'poweredOn') {
-    noble.startScanning();
-  } else {
-    noble.stopScanning();
-  }
-});
+
+var fn = function(peripheralUuid) {
+
+}
 
 var onDisCover =  function(peripheral) {
   if (peripheral.uuid === peripheralUuid) {
@@ -57,7 +55,12 @@ var onDisCover =  function(peripheral) {
   }
 }
 
-noble.on('discover', onDisCover);
+
+var fn = function(f) {
+
+
+
+}
 
 
 var counter = 0;
@@ -248,3 +251,12 @@ function explore(peripheral) {
   peripheral.connect(onConnect);
 
 }
+
+noble.on('discover', onDisCover);
+noble.on('stateChange', function(state) {
+  if (state === 'poweredOn') {
+    noble.startScanning();
+  } else {
+    noble.stopScanning();
+  }
+});
